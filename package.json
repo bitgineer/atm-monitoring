@@ -1,0 +1,106 @@
+{
+  "name": "atm-monitoring",
+  "version": "1.0.0",
+  "description": "Enterprise-grade blockchain ATM transaction monitoring and customer review automation system",
+  "main": "src/app.js",
+  "scripts": {
+    "start": "node src/app.js",
+    "dev": "nodemon src/app.js",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "test:unit": "jest --testPathPattern=tests/unit",
+    "test:integration": "jest --testPathPattern=tests/integration",
+    "test:e2e": "jest --testPathPattern=tests/e2e",
+    "db:init": "node scripts/initDatabase.js",
+    "db:migrate": "node scripts/migrate.js",
+    "db:seed": "node scripts/seed.js",
+    "lint": "eslint src/",
+    "lint:fix": "eslint src/ --fix",
+    "build": "npm run lint && npm test",
+    "deploy": "npm run build && pm2 restart ecosystem.config.js"
+  },
+  "keywords": [
+    "blockchain",
+    "bitcoin",
+    "atm",
+    "automation",
+    "monitoring",
+    "reviews",
+    "customer-engagement",
+    "nodejs",
+    "express",
+    "sqlite",
+    "socket.io",
+    "api-integration",
+    "devops",
+    "fintech"
+  ],
+  "author": "Your Name <your.email@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourprofile/atm-monitoring.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yourprofile/atm-monitoring/issues"
+  },
+  "homepage": "https://github.com/yourprofile/atm-monitoring#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "socket.io": "^4.7.2",
+    "sqlite3": "^5.1.6",
+    "axios": "^1.5.0",
+    "dotenv": "^16.3.1",
+    "bcrypt": "^5.1.1",
+    "jsonwebtoken": "^9.0.2",
+    "helmet": "^7.0.0",
+    "cors": "^2.8.5",
+    "express-rate-limit": "^6.10.0",
+    "express-validator": "^7.0.1",
+    "morgan": "^1.10.0",
+    "compression": "^1.7.4",
+    "ejs": "^3.1.9",
+    "uuid": "^9.0.0",
+    "node-cron": "^3.0.2",
+    "winston": "^3.10.0",
+    "nodemailer": "^6.9.4"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1",
+    "jest": "^29.6.4",
+    "supertest": "^6.3.3",
+    "eslint": "^8.47.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.28.1",
+    "@types/jest": "^29.5.5",
+    "husky": "^8.0.3",
+    "lint-staged": "^14.0.1"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint --fix",
+      "git add"
+    ]
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "coverageDirectory": "coverage",
+    "collectCoverageFrom": [
+      "src/**/*.js",
+      "!src/app.js"
+    ],
+    "testMatch": [
+      "**/tests/**/*.test.js"
+    ]
+  }
+}
